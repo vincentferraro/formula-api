@@ -4,23 +4,23 @@ import {
   InferCreationAttributes,
   CreationOptional,
   DataTypes,
-  Optional,
 } from "sequelize";
 import { sequelize } from "../index";
-// order of InferAttributes & InferCreationAttributes is important.
-export class Competition extends Model<
-  InferAttributes<Competition>,
-  InferCreationAttributes<Competition>
+
+export class Circuit extends Model<
+  InferAttributes<Circuit>,
+  InferCreationAttributes<Circuit>
 > {
-  // 'CreationOptional' is a special type that marks the field as optional
-  // when creating an instance of the model (such as using Model.create()).
   declare id: CreationOptional<number>;
   declare name: string;
+  declare localisation: string;
+  declare length: number;
   declare createdAt?: Date;
   declare updatedAt?: Date;
 }
-export function initializeCompetition(): void {
-  Competition.init(
+
+export function initializationCircuit(): void {
+  Circuit.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -28,15 +28,23 @@ export function initializeCompetition(): void {
         primaryKey: true,
       },
       name: {
+        field: "name",
         type: DataTypes.TEXT,
-        allowNull: false,
+      },
+      localisation: {
+        field: "localisation",
+        type: DataTypes.TEXT,
+      },
+      length: {
+        field: "length",
+        type: DataTypes.FLOAT,
       },
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
     },
     {
       sequelize: sequelize,
-      modelName: "competition",
+      modelName: "circuit",
     }
   );
 }
