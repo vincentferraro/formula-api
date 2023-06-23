@@ -6,6 +6,11 @@ export async function addCompetition(
   res: Response,
   next: NextFunction
 ): Promise<void> {
-  console.log(req);
-  res.status(200).send("it works");
+  const input: Competition = req.body;
+  console.log(input);
+  Competition.create({
+    name: input.name,
+  })
+    .then((result) => res.status(200).send(result))
+    .catch((err) => res.send(err));
 }
