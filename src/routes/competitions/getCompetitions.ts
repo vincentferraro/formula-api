@@ -8,7 +8,6 @@ export async function getCompetitions(
 ): Promise<void> {
   try {
     const competition = await Competition.findAll();
-    console.log(competition);
     res.status(200).json(competition);
   } catch (err) {
     res.status(400).send("ERROR");

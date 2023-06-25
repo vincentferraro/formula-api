@@ -13,7 +13,7 @@ export class Team extends Model<
 > {
   declare id: CreationOptional<number>;
   declare name: string;
-  declare localisation: string;
+  declare location: string;
   declare createdAt?: Date;
   declare updatedAt?: Date;
 }
@@ -30,8 +30,8 @@ export function initializationTeam(): void {
         field: "name",
         type: DataTypes.TEXT,
       },
-      localisation: {
-        field: "localisation",
+      location: {
+        field: "location",
         type: DataTypes.TEXT,
       },
       createdAt: DataTypes.DATE,
