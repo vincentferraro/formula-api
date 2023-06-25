@@ -1,7 +1,7 @@
-import { Team } from "../../db/models/team";
+import { Circuit } from "../../db/models/circuit";
 import { Request, Response, NextFunction } from "express";
 
-export async function deleteTeam(
+export async function deleteCircuit(
   req: Request,
   res: Response,
   next: NextFunction
@@ -9,9 +9,9 @@ export async function deleteTeam(
   try {
     const id: number = parseInt(req.params.id);
     if (typeof id !== "number") throw new Error("No id provided");
-    const team: Team | null = await Team.findByPk(id);
-    if (team === null) throw new Error(`Team with id ${id} not found`);
-    await team.destroy();
+    const circuit: Circuit | null = await Circuit.findByPk(id);
+    if (circuit === null) throw new Error(`Team with id ${id} not found`);
+    circuit.destroy();
     res.status(204).json();
   } catch (err: any) {
     res.status(400).json(err.message);

@@ -13,7 +13,7 @@ export class Circuit extends Model<
 > {
   declare id: CreationOptional<number>;
   declare name: string;
-  declare localisation: string;
+  declare location: string;
   declare length: number;
   declare createdAt?: Date;
   declare updatedAt?: Date;
@@ -31,7 +31,7 @@ export function initializationCircuit(): void {
         field: "name",
         type: DataTypes.TEXT,
       },
-      localisation: {
+      location: {
         field: "localisation",
         type: DataTypes.TEXT,
       },

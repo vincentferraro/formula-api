@@ -3,6 +3,7 @@ const express = require("express");
 import { dbConnection } from "./src/db";
 import CompetitionRoutes from "./src/routes/competitions";
 import TeamRoutes from "./src/routes/teams";
+import CircuitRoutes from "./src/routes/circuits";
 // const swaggerUi = require("swagger-ui-express");
 // const swaggerDocument = require("./swagger.json");
 
@@ -18,6 +19,7 @@ dbConnection();
 
 app.use("/competition", CompetitionRoutes);
 app.use("/team", TeamRoutes);
+app.use("/circuit", CircuitRoutes);
 app.get("/", (req: Request, res: Response): void => {
   res.send("hello");
 });
