@@ -18,6 +18,8 @@ export async function updateCircuit(
     await circuit.update({ ...updateCircuit });
 
     res.status(200).json(circuit);
+
+    // TODO : Manage attribute type during INSERTION length must be FLOAT
   } catch (err: any) {
     res.status(400).json(err.message);
   }

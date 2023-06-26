@@ -3,6 +3,7 @@ import { Dialect, Sequelize } from "sequelize";
 import { Competition, initializeCompetition } from "./models/competition";
 import { Team, initializationTeam } from "./models/team";
 import { Circuit, initializationCircuit } from "./models/circuit";
+import { Driver, initializationDriver } from "./models/driver";
 const DB_NAME: string = process.env.DB_NAME as string;
 const DB_USERNAME: string = process.env.DB_USERNAME as string;
 const DB_PASSWORD: string = process.env.DB_PASSWORD as string;
@@ -26,6 +27,8 @@ export async function dbConnection(): Promise<void> {
     Team.sync();
     initializationCircuit();
     Circuit.sync();
+    initializationDriver();
+    Driver.sync();
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
