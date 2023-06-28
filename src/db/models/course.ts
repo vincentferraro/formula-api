@@ -20,8 +20,8 @@ export async function initializationCourse(): Promise<void> {
   Course.init(
     {
       id: {
-        field: "id",
         type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
       },
       name: {

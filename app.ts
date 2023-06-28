@@ -1,5 +1,6 @@
 import { Express, Request, Response } from "express";
-const express = require("express");
+import express from "express";
+import helmet from "helmet";
 import { dbConnection } from "./src/db";
 import CompetitionRoutes from "./src/routes/competitions";
 import TeamRoutes from "./src/routes/teams";
@@ -15,6 +16,7 @@ const port: number = 3000;
 // MIDDLEWARE
 
 app.use(express.json());
+app.use(helmet());
 dbConnection();
 
 // ROUTES
