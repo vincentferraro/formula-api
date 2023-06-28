@@ -15,3 +15,27 @@ export class Course extends Model<
   declare name: string;
   declare year: string;
 }
+
+export async function initializationCourse(): Promise<void> {
+  Course.init(
+    {
+      id: {
+        field: "id",
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+      },
+      name: {
+        field: "name",
+        type: DataTypes.TEXT,
+      },
+      year: {
+        field: "year",
+        type: DataTypes.INTEGER,
+      },
+    },
+    {
+      sequelize,
+      tableName: "courses",
+    }
+  );
+}

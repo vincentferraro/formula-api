@@ -5,6 +5,7 @@ import CompetitionRoutes from "./src/routes/competitions";
 import TeamRoutes from "./src/routes/teams";
 import CircuitRoutes from "./src/routes/circuits";
 import DriverRoutes from "./src/routes/drivers";
+import CourseRoutes from "./src/routes/courses";
 // const swaggerUi = require("swagger-ui-express");
 // const swaggerDocument = require("./swagger.json");
 
@@ -18,11 +19,11 @@ dbConnection();
 
 // ROUTES
 
-app.use("/competition", CompetitionRoutes);
-app.use("/team", TeamRoutes);
-app.use("/circuit", CircuitRoutes);
+app.use("/competitions", CompetitionRoutes);
+app.use("/teams", TeamRoutes);
+app.use("/circuits", CircuitRoutes);
 app.use("/drivers", DriverRoutes);
-
+app.use("/courses", CourseRoutes);
 app.get("/", (req: Request, res: Response): void => {
   res.send("Welcome to Formula-api");
 });
