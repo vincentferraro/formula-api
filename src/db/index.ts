@@ -5,6 +5,8 @@ import { Team, initializationTeam } from "./models/team";
 import { Circuit, initializationCircuit } from "./models/circuit";
 import { Driver, initializationDriver } from "./models/driver";
 import { Course, initializationCourse } from "./models/course";
+import { User, initializationUser } from "./models/user";
+
 const DB_NAME: string = process.env.DB_NAME as string;
 const DB_USERNAME: string = process.env.DB_USERNAME as string;
 const DB_PASSWORD: string = process.env.DB_PASSWORD as string;
@@ -32,6 +34,8 @@ export async function dbConnection(): Promise<void> {
     Driver.sync();
     initializationCourse();
     Course.sync();
+    initializationUser();
+    User.sync();
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
