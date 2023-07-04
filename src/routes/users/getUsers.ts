@@ -1,19 +1,14 @@
 import { User } from "../../db/models/user";
 import { Request, Response, NextFunction } from "express";
 
-export async function addUser(
+export async function getUsers(
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> {
   try {
-    const input: User = req.body;
-    if (typeof input === null) throw new Error(`Missing input`);
-    const user = await User.create();
-    res.status(200).json({
-      message: "User Created",
-      data: user,
-    });
+    const users = await User.findAll();
+    res.status(200).json(users);
   } catch (err: any) {
     res.status(400).json(err.message);
   }
