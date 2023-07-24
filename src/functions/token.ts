@@ -14,7 +14,7 @@ export function generateToken(input: User): string {
     {
       exp: Math.floor(Date.now()) + 60 * 60 * 24 * 1000,
       username: input.username,
-      role: "READER",
+      role: input.role,
     },
     privateKey
   );
@@ -43,25 +43,4 @@ export async function validToken(
   } else {
     return { valid: false };
   }
-
-  // if (tokenDecoded.exp !== undefined) {
-  //   if (
-  //     Date.now() < tokenDecoded.exp &&
-  //     tokenDecoded.username === req.headers.username
-  //   ) {
-  //     console.log(tokenDecoded);
-  //     return {
-  //       valid: true,
-  //       role: tokenDecoded.role,
-  //     };
-  //   } else {
-  //     return {
-  //       valid: false,
-  //     };
-  //   }
-  // } else {
-  //   return {
-  //     valid: false,
-  //   };
-  // }
 }
