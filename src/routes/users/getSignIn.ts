@@ -2,7 +2,7 @@ import { User } from "../../db/models/user";
 import { Request, Response, NextFunction } from "express";
 // import { decryptPassword } from "../../functions/password";
 import bcrypt from "bcrypt";
-import { generateToken, verifyToken } from "../../functions/token";
+import { generateToken } from "../../functions/token";
 export async function getSignIn(
   req: Request,
   res: Response,

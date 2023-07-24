@@ -19,7 +19,7 @@ export function generateToken(input: User): string {
   );
 }
 
-export async function verifyToken(
+export async function validToken(
   token: string,
   req: Request
 ): Promise<Boolean> {
@@ -40,5 +40,3 @@ export async function verifyToken(
     return false;
   }
 }
-
-// function getToken(user: User): Promise<Boolean> {}
