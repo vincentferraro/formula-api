@@ -9,6 +9,7 @@ import DriverRoutes from "./src/routes/drivers";
 import CourseRoutes from "./src/routes/courses";
 import UserRoutes from "./src/routes/users";
 import { verifyToken } from "./src/middlewares/verifytoken";
+import { hasRights } from "./src/middlewares/hasRights";
 // const swaggerUi = require("swagger-ui-express");
 // const swaggerDocument = require("./swagger.json");
 
@@ -20,6 +21,7 @@ const port: number = 3000;
 app.use(express.json());
 app.use(helmet());
 app.use(verifyToken);
+app.use(hasRights);
 dbConnection();
 
 // ROUTES

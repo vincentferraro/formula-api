@@ -6,14 +6,16 @@ export async function verifyToken(
   next: NextFunction
 ) {
   try {
-    if (req.path === "/users/signin") {
+    if (req.path === "/users/signin" || req.path === "/users/") {
+      res.locals.signin = true;
       next();
     } else {
       const token: string = req.headers.authorization as string;
       if (token === undefined) throw new Error(`token not provided`);
       if (req.headers.username === undefined)
         throw new Error(`username not provided`);
-      await validToken(token.substring(7), req);
+      const ok = await validToken(token.substring(7), req);
+      res.locals.role = ok.role;
       next();
     }
   } catch (err: any) {

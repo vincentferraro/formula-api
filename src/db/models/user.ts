@@ -16,6 +16,7 @@ export class User extends Model<
   declare username: string;
   declare password: string;
   declare token: string;
+  declare role?: string;
 }
 
 export async function initializationUser(): Promise<void> {
@@ -37,6 +38,12 @@ export async function initializationUser(): Promise<void> {
       token: {
         field: "token",
         type: DataTypes.TEXT,
+      },
+      role: {
+        field: "role",
+        type: DataTypes.ENUM,
+        values: ["ADMIN", "READER"],
+        defaultValue: "READER",
       },
     },
     {
