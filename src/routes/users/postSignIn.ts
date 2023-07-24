@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from "express";
 // import { decryptPassword } from "../../functions/password";
 import bcrypt from "bcrypt";
 import { generateToken } from "../../functions/token";
-export async function getSignIn(
+export async function postSignIn(
   req: Request,
   res: Response,
   next: NextFunction
@@ -22,7 +22,7 @@ export async function getSignIn(
       input.password,
       user.password
     );
-    if (passwordDecrypted === false) throw new Error(`Username not found`);
+    if (passwordDecrypted === false) throw new Error(`Password error`);
     const token: string = generateToken(user);
     user.token = token;
     await user.save();
