@@ -1,5 +1,6 @@
 import { addUser } from "./addUser";
 import { deleteUser } from "./deleteUser";
+import { getSignIn } from "./getSignIn";
 import { getUserById } from "./getUserById";
 import { getUsers } from "./getUsers";
 import { updateUser } from "./updateUser";
@@ -12,6 +13,7 @@ const router: Router = Router();
 router.post("/", addUser);
 router.get("/:id", getUserById);
 router.get("/", getUsers);
+router.post("/signin", getSignIn);
 router.put("/:id", updateUser);
 router.delete("/:id", deleteUser);
 

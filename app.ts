@@ -39,3 +39,16 @@ app.listen(port, (): void => {
 });
 
 export { app };
+
+// ZONE TEST
+
+// import { generateToken, verifytoken } from "./src/functions/token";
+// import { User } from "./src/db/models/user";
+// const us = {
+//   username: "test",
+//   password: "passtest",
+//   token: "testToken",
+// };
+// const token = generateToken(us);
+// console.log(token);
+// verifytoken(token);
