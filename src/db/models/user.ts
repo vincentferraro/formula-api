@@ -30,6 +30,7 @@ export async function initializationUser(): Promise<void> {
       username: {
         field: "username",
         type: DataTypes.TEXT,
+        unique: true,
       },
       password: {
         field: "password",
