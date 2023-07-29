@@ -4,6 +4,7 @@ import { getDrivers } from "./getDrivers";
 import { updateDriver } from "./updateDriver";
 import { deleteDriver } from "./deleteDriver";
 import { getDriverById } from "./getDriverById";
+import { getDriversTeam } from "./getDriversTeam";
 
 const router: Router = Router();
 
@@ -11,6 +12,7 @@ const router: Router = Router();
 
 router.post("/", addDriver);
 router.get("/", getDrivers);
+router.get("/team", getDriversTeam);
 router.get("/:id", getDriverById);
 router.put("/:id", updateDriver);
 router.delete("/:id", deleteDriver);

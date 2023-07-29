@@ -13,6 +13,7 @@ export async function addDriver(
       lastName: input?.lastName,
       firstName: input?.firstName,
       number: input?.number,
+      teamId: input?.teamId,
     });
     res.status(200).json(driver);
   } catch (err: any) {

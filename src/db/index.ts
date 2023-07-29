@@ -20,6 +20,16 @@ export const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, {
   port: parseInt(DB_PORT),
 });
 
+async function Association() {
+  Team.hasMany(Driver, {
+    sourceKey: "id",
+    foreignKey: "teamId",
+  });
+  Driver.belongsTo(Team, {
+    targetKey: "id",
+    foreignKey: "teamId",
+  });
+}
 export async function dbConnection(): Promise<void> {
   try {
     await sequelize.authenticate();
@@ -35,6 +45,7 @@ export async function dbConnection(): Promise<void> {
     initializationCourse();
     Course.sync();
     initializationUser();
+    Association();
     User.sync();
   } catch (error) {
     console.error("Unable to connect to the database:", error);

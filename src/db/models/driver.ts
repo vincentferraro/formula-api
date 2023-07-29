@@ -15,6 +15,7 @@ export class Driver extends Model<
   declare firstName: string;
   declare lastName: string;
   declare number: string;
+  declare teamId: number;
 }
 
 export async function initializationDriver(): Promise<void> {
@@ -36,6 +37,10 @@ export async function initializationDriver(): Promise<void> {
       },
       number: {
         field: "number",
+        type: DataTypes.INTEGER,
+      },
+      teamId: {
+        field: "team_id",
         type: DataTypes.INTEGER,
       },
     },
