@@ -8,6 +8,7 @@ import CircuitRoutes from "./src/routes/circuits";
 import DriverRoutes from "./src/routes/drivers";
 import CourseRoutes from "./src/routes/courses";
 import UserRoutes from "./src/routes/users";
+import RankingRoute from "./src/routes/rankings";
 import { verifyToken } from "./src/middlewares/verifytoken";
 import { hasRights } from "./src/middlewares/hasRights";
 // const swaggerUi = require("swagger-ui-express");
@@ -33,6 +34,7 @@ app.use("/circuits", CircuitRoutes);
 app.use("/drivers", DriverRoutes);
 app.use("/courses", CourseRoutes);
 app.use("/users", UserRoutes);
+app.use("/rankings", RankingRoute);
 app.get("/", (req: Request, res: Response): void => {
   res.send("Welcome to Formula-api");
 });

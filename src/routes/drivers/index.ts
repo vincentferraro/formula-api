@@ -9,7 +9,7 @@ import { getDriverByIdTeam } from "./getDriverByIdTeam";
 
 const router: Router = Router();
 
-// Circuit Routes
+// Driver Routes
 
 router.post("/", addDriver);
 router.get("/", getDrivers);
