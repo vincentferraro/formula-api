@@ -10,11 +10,10 @@ export async function addDriversCourses(
     const input: DriversCourses = req.body;
     if (Object.keys(input).length === 0) throw new Error(" Missing input");
     const driversCourses: DriversCourses = await DriversCourses.create({
-      driverId: input?.driverId,
-      courseId: input?.courseId,
+      DriverId: input?.DriverId,
+      CourseId: input?.CourseId,
       rank: input?.rank,
     });
-    console.log(driversCourses);
     res
       .status(200)
       .json(

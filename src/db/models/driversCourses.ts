@@ -6,26 +6,36 @@ import {
   DataTypes,
 } from "sequelize";
 import { sequelize } from "../index";
+import { Driver } from "./driver";
+import { Course } from "./course";
 
 export class DriversCourses extends Model<
   InferAttributes<DriversCourses>,
   InferCreationAttributes<DriversCourses>
 > {
-  declare driverId: number;
-  declare courseId: number;
+  declare DriverId: number;
+  declare CourseId: number;
   declare rank: number;
 }
 
 export async function initializationDriversCourses(): Promise<void> {
   DriversCourses.init(
     {
-      driverId: {
+      DriverId: {
         field: "driver_id",
         type: DataTypes.INTEGER,
+        references: {
+          model: Driver,
+          key: "id",
+        },
       },
-      courseId: {
+      CourseId: {
         field: "course_id",
         type: DataTypes.INTEGER,
+        references: {
+          model: Course,
+          key: "id",
+        },
       },
       rank: {
         field: "rank",
