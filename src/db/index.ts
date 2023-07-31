@@ -42,16 +42,24 @@ async function Association() {
     targetKey: "id",
     foreignKey: "competitionId",
   });
-  Ranking.hasOne(Competition, {
+  Competition.hasMany(Ranking, {
     sourceKey: "id",
     foreignKey: "competitionId",
   });
-  Competition.belongsTo(Ranking, {
+  Ranking.belongsTo(Competition, {
     targetKey: "id",
     foreignKey: "competitionId",
   });
   Driver.belongsToMany(Course, { through: DriversCourses });
   Course.belongsToMany(Driver, { through: DriversCourses });
+  Competition.hasMany(Course, {
+    sourceKey: "id",
+    foreignKey: "competitionId",
+  });
+  Course.belongsTo(Competition, {
+    targetKey: "id",
+    foreignKey: "competitionId",
+  });
 }
 export async function dbConnection(): Promise<void> {
   try {
