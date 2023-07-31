@@ -47,6 +47,7 @@ export async function initializationDriver(): Promise<void> {
     {
       sequelize,
       tableName: "drivers",
+      timestamps: false,
     }
   );
 }

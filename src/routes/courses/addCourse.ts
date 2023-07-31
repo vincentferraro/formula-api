@@ -13,6 +13,9 @@ export async function addCourse(
     const course: Course = await Course.create({
       name: input?.name,
       year: input?.year,
+      round: input?.round,
+      circuitId: input?.circuitId,
+      competitionId: input?.competitionId,
     });
     res.status(200).json(course);
   } catch (err: any) {

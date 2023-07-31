@@ -7,31 +7,32 @@ import {
 } from "sequelize";
 import { sequelize } from "../index";
 
-export class Team extends Model<
-  InferAttributes<Team>,
-  InferCreationAttributes<Team>
+export class Ranking extends Model<
+  InferAttributes<Ranking>,
+  InferCreationAttributes<Ranking>
 > {
   declare id: CreationOptional<number>;
-  declare name: string;
-  declare location: string;
-  declare competitionId: string;
+  declare rank: number;
+  declare point: number;
+  declare competitionId: number;
 }
 
-export function initializationTeam(): void {
-  Team.init(
+export async function initializationRanking(): Promise<void> {
+  Ranking.init(
     {
       id: {
+        field: "id",
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
-        field: "name",
-        type: DataTypes.TEXT,
+      rank: {
+        field: "rank",
+        type: DataTypes.INTEGER,
       },
-      location: {
-        field: "location",
-        type: DataTypes.TEXT,
+      point: {
+        field: "point",
+        type: DataTypes.INTEGER,
       },
       competitionId: {
         field: "competition_id",
@@ -39,8 +40,8 @@ export function initializationTeam(): void {
       },
     },
     {
-      sequelize: sequelize,
-      modelName: "team",
+      sequelize,
+      tableName: "rankings",
       timestamps: false,
     }
   );

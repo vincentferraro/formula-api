@@ -13,6 +13,7 @@ export async function addTeam(
     const team: Team = await Team.create({
       name: input?.name,
       location: input?.location,
+      competitionId: input?.competitionId,
     });
     res.status(200).json(team);
   } catch (err: any) {

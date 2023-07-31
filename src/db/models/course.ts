@@ -14,6 +14,9 @@ export class Course extends Model<
   declare id: CreationOptional<number>;
   declare name: string;
   declare year: string;
+  declare circuitId: string;
+  declare competitionId: string;
+  declare round: string;
 }
 
 export async function initializationCourse(): Promise<void> {
@@ -32,10 +35,23 @@ export async function initializationCourse(): Promise<void> {
         field: "year",
         type: DataTypes.INTEGER,
       },
+      round: {
+        field: "round",
+        type: DataTypes.INTEGER,
+      },
+      circuitId: {
+        field: "circuit_id",
+        type: DataTypes.INTEGER,
+      },
+      competitionId: {
+        field: "competition_id",
+        type: DataTypes.INTEGER,
+      },
     },
     {
       sequelize,
       tableName: "courses",
+      timestamps: false,
     }
   );
 }

@@ -15,8 +15,6 @@ export class Circuit extends Model<
   declare name: string;
   declare location: string;
   declare length: number;
-  declare createdAt?: Date;
-  declare updatedAt?: Date;
 }
 
 export function initializationCircuit(): void {
@@ -39,12 +37,11 @@ export function initializationCircuit(): void {
         field: "length",
         type: DataTypes.FLOAT,
       },
-      createdAt: DataTypes.DATE,
-      updatedAt: DataTypes.DATE,
     },
     {
       sequelize: sequelize,
       modelName: "circuit",
+      timestamps: false,
     }
   );
 }

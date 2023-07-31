@@ -50,6 +50,7 @@ export async function initializationUser(): Promise<void> {
     {
       sequelize,
       tableName: "users",
+      timestamps: false,
     }
   );
 }

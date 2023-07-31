@@ -6,6 +6,7 @@ import { Circuit, initializationCircuit } from "./models/circuit";
 import { Driver, initializationDriver } from "./models/driver";
 import { Course, initializationCourse } from "./models/course";
 import { User, initializationUser } from "./models/user";
+import { Ranking, initializationRanking } from "./models/ranking";
 
 const DB_NAME: string = process.env.DB_NAME as string;
 const DB_USERNAME: string = process.env.DB_USERNAME as string;
@@ -29,6 +30,22 @@ async function Association() {
     targetKey: "id",
     foreignKey: "teamId",
   });
+  Competition.hasMany(Team, {
+    sourceKey: "id",
+    foreignKey: "competitionId",
+  });
+  Team.belongsTo(Competition, {
+    targetKey: "id",
+    foreignKey: "competitionId",
+  });
+  Ranking.hasOne(Competition, {
+    sourceKey: "id",
+    foreignKey: "competitionId",
+  });
+  Competition.belongsTo(Ranking, {
+    targetKey: "id",
+    foreignKey: "competitionId",
+  });
 }
 export async function dbConnection(): Promise<void> {
   try {
@@ -45,8 +62,10 @@ export async function dbConnection(): Promise<void> {
     initializationCourse();
     Course.sync();
     initializationUser();
-    Association();
     User.sync();
+    initializationRanking();
+    Ranking.sync();
+    Association();
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
