@@ -7,6 +7,10 @@ import { Driver, initializationDriver } from "./models/driver";
 import { Course, initializationCourse } from "./models/course";
 import { User, initializationUser } from "./models/user";
 import { Ranking, initializationRanking } from "./models/ranking";
+import {
+  DriversCourses,
+  initializationDriversCourses,
+} from "./models/driversCourses";
 
 const DB_NAME: string = process.env.DB_NAME as string;
 const DB_USERNAME: string = process.env.DB_USERNAME as string;
@@ -46,6 +50,8 @@ async function Association() {
     targetKey: "id",
     foreignKey: "competitionId",
   });
+  Driver.belongsToMany(Course, { through: DriversCourses });
+  Course.belongsToMany(Driver, { through: DriversCourses });
 }
 export async function dbConnection(): Promise<void> {
   try {
@@ -65,6 +71,8 @@ export async function dbConnection(): Promise<void> {
     User.sync();
     initializationRanking();
     Ranking.sync();
+    initializationDriversCourses();
+    DriversCourses.sync();
     Association();
   } catch (error) {
     console.error("Unable to connect to the database:", error);
