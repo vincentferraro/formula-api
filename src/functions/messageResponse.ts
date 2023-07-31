@@ -27,6 +27,7 @@ export function successMessage(
     | Team
     | User
     | DriversCourses
+    | Array<DriversCourses>
 ): objectResponse<
   | Driver
   | Circuit
@@ -37,6 +38,7 @@ export function successMessage(
   | Team
   | User
   | DriversCourses
+  | Array<DriversCourses>
 > {
   return {
     message: message,

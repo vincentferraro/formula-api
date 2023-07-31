@@ -13,6 +13,7 @@ export class DriversCourses extends Model<
   InferAttributes<DriversCourses>,
   InferCreationAttributes<DriversCourses>
 > {
+  declare id: CreationOptional<number>;
   declare DriverId: number;
   declare CourseId: number;
   declare rank: number;
@@ -21,6 +22,12 @@ export class DriversCourses extends Model<
 export async function initializationDriversCourses(): Promise<void> {
   DriversCourses.init(
     {
+      id: {
+        field: "id",
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
       DriverId: {
         field: "driver_id",
         type: DataTypes.INTEGER,
