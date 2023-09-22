@@ -28,7 +28,7 @@ export async function getDriversPoints(req: Request, res: Response, next: NextFu
             driversPoints.push(driverWithPoints)
           }
           console.log(driversPoints)
-        //   console.lo
+          console.log('hello')
           res.status(200).json(driversPoints)
     }catch(err){
         res.status(400).json(err)
