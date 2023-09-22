@@ -52,17 +52,19 @@
 import { DriverPoints } from "../*"
 
 // ]
-export async function SortDrivers(drivers:any):Promise<Array<DriverPoints>>{
-    let driversSorted = drivers
-    let index = driversSorted.length-1
+
+// This function sort the array DESCENDANT
+export async function displayRanking(array:any):Promise<Array<DriverPoints>>{
+    let arraySorted = array
+    let index = arraySorted.length-1
     for(let i = 0; i<index; i++){
-        if(driversSorted[i].points < driversSorted[i+1].points){
-            let temp= driversSorted[i]
-            driversSorted[i]=driversSorted[i+1]
-            driversSorted[i+1] = temp
+        if(arraySorted[i].points < arraySorted[i+1].points){
+            let temp= arraySorted[i]
+            arraySorted[i]=arraySorted[i+1]
+            arraySorted[i+1] = temp
             i=-1
         }
     }
-    return driversSorted
+    return arraySorted
 }
 
