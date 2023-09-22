@@ -14,5 +14,6 @@ export async function calculPoint(
       sumPoint += ranking.point;
     }
   }
+  
   return sumPoint;
 }

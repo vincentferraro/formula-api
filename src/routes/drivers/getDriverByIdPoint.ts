@@ -4,7 +4,8 @@ import { DriversCourses } from "../../db/models/driversCourses";
 import { Ranking } from "../../db/models/ranking";
 import { Course } from "../../db/models/course";
 import { Competition } from "../../db/models/competition";
-import { calculPoint } from "../../functions/calculRank";
+import { DriverWithPoints } from "../../functions/driverWithPoints";
+
 export async function getDriverByIdWithPoints(
   req: Request,
   res: Response,
@@ -24,12 +25,14 @@ export async function getDriverByIdWithPoints(
         ],
       },
     });
-    const result: number = await calculPoint(
-      driver.Courses[0].competition.Rankings,
-      driver.Courses
-    );
     if (driver === null) throw new Error(`Driver with id ${id} not found`);
-    res.status(200).json(driver);
+
+    console.log(driver)
+
+    //Calculate driver's points
+    const driverWithPoints = await DriverWithPoints(driver)
+
+    res.status(200).json(driverWithPoints);
     // res.status(204).json(driver);
   } catch (err: any) {
     res.status(400).json(err.message);
