@@ -6,6 +6,7 @@ import { Ranking } from "../db/models/ranking";
 import { Team } from "../db/models/team";
 import { User } from "../db/models/user";
 import { DriversCourses } from "../db/models/driversCourses";
+import { DriverPoints } from "../*";
 
 interface objectResponse<T> {
   message: string;
@@ -28,6 +29,7 @@ export function successMessage(
     | User
     | DriversCourses
     | Array<DriversCourses>
+    |Array<DriverPoints>
 ): objectResponse<
   | Driver
   | Circuit
@@ -39,6 +41,7 @@ export function successMessage(
   | User
   | DriversCourses
   | Array<DriversCourses>
+  |Array<DriverPoints>
 > {
   return {
     message: message,
