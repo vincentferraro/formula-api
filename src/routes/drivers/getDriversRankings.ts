@@ -5,7 +5,7 @@ import { Competition } from "../../db/models/competition";
 import { Ranking } from "../../db/models/ranking";
 import { DriverWithPoints } from "../../functions/driverWithPoints";
 import { DriverPoints } from "../../*";
-import { SortDrivers } from "../../functions/sortDrivers";
+import { displayRanking } from "../../functions/sortDrivers";
 import { successMessage, errorMessage } from "../../functions/messageResponse";
 export async function getDriversRanking(req: Request, res: Response, next: NextFunction):Promise<void>{
 
@@ -33,7 +33,7 @@ export async function getDriversRanking(req: Request, res: Response, next: NextF
 
         // STEP 3: Sort Drivers for create the ranking
 
-        const ranking: Array<DriverPoints>  = await SortDrivers(driversPoints)
+        const ranking: Array<DriverPoints>  = await displayRanking(driversPoints)
 
         res.status(200).json(successMessage("Ranking successfully displayed",ranking))
 
