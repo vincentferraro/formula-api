@@ -3,15 +3,9 @@ import { Team } from "../../db/models/team";
 import { Driver } from "../../db/models/driver";
 import { sumPoint } from "../sum";
 import { DriverPoints } from "../../*";
+import { TeamPoint } from "../../*";
 
 
-type TeamPoint = {
-    id: number,
-    name: string,
-    location: string,
-    competitionId: string,
-    points: number
-}
 interface TeamDrivers extends Team{
     Drivers : Array<Driver>
 }

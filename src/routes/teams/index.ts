@@ -6,6 +6,7 @@ import { deleteTeam } from "./deleteTeam";
 import { Router } from "express";
 import { getTeamsDriver } from "./getTeamsDrivers";
 import { getTeamByIdPoints } from "./getTeamByIdPoints";
+import { getTeamsStanding } from "./getTeamsStanding";
 
 const router: Router = Router();
 // TEAM ROUTES
@@ -14,10 +15,13 @@ const router: Router = Router();
 router.post("/", addTeam);
 
 // GET
-router.get("/:id", getTeamById);
+
 router.get("/", getTeams);
-router.get("/:id/points", getTeamByIdPoints)
+router.get("/standing", getTeamsStanding)
 router.get("/drivers", getTeamsDriver);
+router.get("/:id", getTeamById);
+router.get("/:id/points", getTeamByIdPoints)
+
 
 // PUT
 router.put("/:id", updateTeam);

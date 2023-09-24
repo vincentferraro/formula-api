@@ -23,7 +23,7 @@ const port: number = 3000;
 app.use(express.json());
 app.use(helmet());
 app.use(verifyToken);
-console.log("ici");
+
 app.use(hasRights);
 dbConnection();
 
