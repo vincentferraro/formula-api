@@ -3,7 +3,7 @@ import { DriverPoints } from "../*"
 import { TeamPoint } from "../*"
 
 // This function sort the array DESCENDANT
-export async function displayStanding(array:any, position: boolean):Promise<Array<DriverPoints>|Array<TeamPoint>>{
+export async function displayStandings(array:any, position: boolean):Promise<Array<DriverPoints>|Array<TeamPoint>>{
     let arraySorted = array
     let index = arraySorted.length-1
     for(let i = 0; i<index; i++){
@@ -15,8 +15,7 @@ export async function displayStanding(array:any, position: boolean):Promise<Arra
         }
     }
     if(position === true){
-        for(let i = 0; arraySorted < arraySorted.length; i++){
-            console.log(arraySorted[i])
+        for(let i = 0; i < arraySorted.length; i++){
             arraySorted[i].ranking = i+1
         }
     }

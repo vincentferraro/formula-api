@@ -1,9 +1,9 @@
 import { Team } from "../../db/models/team"
 import { TeamPoint } from "../../*";
 import { teamPoint } from "./teamPoints";
-import { displayStanding } from "../displayStanding";
+import { displayStandings } from "../displayStandings";
 
-export async function teamStanding():Promise<Array<TeamPoint>|any>{
+export async function teamStandings():Promise<Array<TeamPoint>|any>{
     try{
         console.log("hhello 2")
         const teamsArray: Array<TeamPoint> = []
@@ -14,9 +14,9 @@ export async function teamStanding():Promise<Array<TeamPoint>|any>{
             if(teamPointResult instanceof Error) throw Error(teamPointResult.message)
             teamsArray.push(teamPointResult)
         }
-        const standing = await displayStanding(teamsArray, true) as Array<TeamPoint>
+        const standings = await displayStandings(teamsArray, true) as Array<TeamPoint>
 
-        return standing
+        return standings
     }catch(err){
         return err
     }
