@@ -8,7 +8,7 @@ export async function getTeamById(
 ): Promise<void> {
   try {
     const id: number = parseInt(req.params.id);
-    console.log(id);
+    
     if (typeof id !== "number") throw new Error("No id provided");
 
     const team: Team | null = await Team.findByPk(id);
