@@ -7,7 +7,6 @@ export async function addCompetition(
   next: NextFunction
 ): Promise<void> {
   const input: Competition = req.body;
-  console.log(input);
   Competition.create({
     name: input.name,
   })

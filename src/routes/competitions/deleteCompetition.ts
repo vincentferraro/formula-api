@@ -20,8 +20,6 @@ export async function deleteCompetition(
     await competition.destroy();
     res.status(204).send();
   } catch (err: any) {
-    console.log(err.message);
-
     res.status(400).json(err.message);
   }
 }

@@ -10,7 +10,6 @@ export async function getDriversTeam(
     const drivers = await Driver.findAll({
       include: Team,
     });
-    console.log(drivers);
     res.status(200).json(drivers);
   } catch (err) {
     res.status(400).json(err);

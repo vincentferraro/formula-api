@@ -13,7 +13,6 @@ export async function getDriverByIdTeam(
     const driver: Driver | null = await Driver.findByPk(id, {
       include: Team,
     });
-    console.log(driver);
     if (driver === null) throw new Error(`Driver with id ${id} not found`);
     res.status(200).json(driver);
   } catch (err: any) {

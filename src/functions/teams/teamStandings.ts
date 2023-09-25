@@ -5,7 +5,6 @@ import { displayStandings } from "../displayStandings";
 
 export async function teamStandings():Promise<Array<TeamPoint>|any>{
     try{
-        console.log("hhello 2")
         const teamsArray: Array<TeamPoint> = []
         const teams : Array<Team> = await Team.findAll()
 
