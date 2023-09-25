@@ -6,10 +6,10 @@ import CompetitionRoutes from "./src/routes/competitions";
 import TeamRoutes from "./src/routes/teams";
 import CircuitRoutes from "./src/routes/circuits";
 import DriverRoutes from "./src/routes/drivers";
-import CourseRoutes from "./src/routes/courses";
+import RaceRoutes from "./src/routes/races"
 import UserRoutes from "./src/routes/users";
 import RankingRoutes from "./src/routes/rankings";
-import DriversCoursesRoutes from "./src/routes/driversCourses";
+import DriversRacesRoutes from "./src/routes/driversRaces";
 import { verifyToken } from "./src/middlewares/verifytoken";
 import { hasRights } from "./src/middlewares/hasRights";
 // const swaggerUi = require("swagger-ui-express");
@@ -33,10 +33,10 @@ app.use("/competitions", CompetitionRoutes);
 app.use("/teams", TeamRoutes);
 app.use("/circuits", CircuitRoutes);
 app.use("/drivers", DriverRoutes);
-app.use("/courses", CourseRoutes);
+app.use("/races", RaceRoutes);
 app.use("/users", UserRoutes);
 app.use("/rankings", RankingRoutes);
-app.use("/driverscourses", DriversCoursesRoutes);
+app.use("/driversraces", DriversRacesRoutes);
 app.get("/", (req: Request, res: Response): void => {
   res.send("Welcome to Formula-api");
 });

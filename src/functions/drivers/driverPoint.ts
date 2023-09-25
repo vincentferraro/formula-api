@@ -1,5 +1,5 @@
 import { Driver } from "../../db/models/driver";
-import { Course } from "../../db/models/course";
+import { Race } from "../../db/models/race";
 import { Competition } from "../../db/models/competition";
 import { Ranking } from "../../db/models/ranking";
 import { DriverWithPoints } from "../driverWithPoints";
@@ -7,7 +7,7 @@ export async function driverPoints(id: number):Promise<any>{
     try{
         const driver: any | null = await Driver.findByPk(id, {
             include: {
-              model: Course,
+              model: Race,
               include: [
                 {
                   model: Competition,

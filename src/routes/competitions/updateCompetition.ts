@@ -12,11 +12,12 @@ export async function updateCompetition(
     if (!req.params.id || !req.body) {
       throw new Error("id or invalid body");
     }
-    Competition.findByPk(id)
-      .then((competition) => competition?.update(input))
-      .then((competitionUpdated) => res.status(200).json(competitionUpdated))
-      .catch((err) => new Error(err));
-  } catch (err) {
-    next(err);
+    const competition = await Competition.findByPk(id)
+    if(competition === null) throw new Error(`Competition with id ${id} not found`)
+    competition?.update(input)
+    
+    res.status(204).json()
+  } catch (err:any) {
+    res.status(400).json(err.message)
   }
 }

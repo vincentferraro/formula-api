@@ -7,20 +7,20 @@ import {
 } from "sequelize";
 import { sequelize } from "../index";
 import { Driver } from "./driver";
-import { Course } from "./course";
+import { Race } from "./race";
 
-export class DriversCourses extends Model<
-  InferAttributes<DriversCourses>,
-  InferCreationAttributes<DriversCourses>
+export class DriversRaces extends Model<
+  InferAttributes<DriversRaces>,
+  InferCreationAttributes<DriversRaces>
 > {
   declare id: CreationOptional<number>;
   declare DriverId: number;
-  declare CourseId: number;
+  declare RaceId: number;
   declare rank: number;
 }
 
-export async function initializationDriversCourses(): Promise<void> {
-  DriversCourses.init(
+export async function initializationDriversRaces(): Promise<void> {
+  DriversRaces.init(
     {
       id: {
         field: "id",
@@ -36,11 +36,11 @@ export async function initializationDriversCourses(): Promise<void> {
           key: "id",
         },
       },
-      CourseId: {
-        field: "course_id",
+      RaceId: {
+        field: "race_id",
         type: DataTypes.INTEGER,
         references: {
-          model: Course,
+          model: Race,
           key: "id",
         },
       },
@@ -51,7 +51,7 @@ export async function initializationDriversCourses(): Promise<void> {
     },
     {
       sequelize,
-      tableName: "drivers_courses",
+      tableName: "drivers_races",
       timestamps: false,
     }
   );

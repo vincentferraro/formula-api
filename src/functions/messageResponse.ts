@@ -1,11 +1,11 @@
 import { Driver } from "../db/models/driver";
 import { Circuit } from "../db/models/circuit";
 import { Competition } from "../db/models/competition";
-import { Course } from "../db/models/course";
+import { Race } from "../db/models/race";
 import { Ranking } from "../db/models/ranking";
 import { Team } from "../db/models/team";
 import { User } from "../db/models/user";
-import { DriversCourses } from "../db/models/driversCourses";
+import { DriversRaces } from "../db/models/driversRaces";
 import { DriverPoints } from "../*";
 
 interface objectResponse<T> {
@@ -22,25 +22,25 @@ export function successMessage(
     | Driver
     | Circuit
     | Competition
-    | Course
+    | Race
     | Ranking
     | Array<Ranking>
     | Team
     | User
-    | DriversCourses
-    | Array<DriversCourses>
+    | DriversRaces
+    | Array<DriversRaces>
     |Array<DriverPoints>
 ): objectResponse<
   | Driver
   | Circuit
   | Competition
-  | Course
+  | Race
   | Ranking
   | Array<Ranking>
   | Team
   | User
-  | DriversCourses
-  | Array<DriversCourses>
+  | DriversRaces
+  | Array<DriversRaces>
   |Array<DriverPoints>
 > {
   return {

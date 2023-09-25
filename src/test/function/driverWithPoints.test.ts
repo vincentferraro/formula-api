@@ -4,7 +4,7 @@ import { Driver } from "../../db/models/driver";
 import { DriverWithPoints } from "../../functions/driverWithPoints";
 import { Competition } from "../../db/models/competition";
 import { Ranking } from "../../db/models/ranking";
-import { Course } from "../../db/models/course";
+import { Race } from "../../db/models/race";
 
 test("test driverWithPoints function", async()=>{
 
@@ -14,7 +14,7 @@ test("test driverWithPoints function", async()=>{
         await dbConnection()
         driverResult = await Driver.findByPk(1,{
             include: {
-              model: Course,
+              model: Race,
               include: [
                 {
                   model: Competition,

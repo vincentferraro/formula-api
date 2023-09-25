@@ -3,7 +3,7 @@ import { dbConnection } from "../../db";
 import { displayStandings } from "../../functions/displayStandings";
 import { DriverPoints } from "../../*";
 import { Driver } from "../../db/models/driver";
-import { Course } from "../../db/models/course";
+import { Race } from "../../db/models/race";
 import { Competition } from "../../db/models/competition";
 import { Ranking } from "../../db/models/ranking";
 import { DriverWithPoints } from "../../functions/driverWithPoints";
@@ -19,7 +19,7 @@ test("test displayStandings function", async()=>{
         const drivers : Array<Driver> = await Driver.findAll(
             {
                 include: {
-                  model: Course,
+                  model: Race,
                   include: [
                     {
                       model: Competition,

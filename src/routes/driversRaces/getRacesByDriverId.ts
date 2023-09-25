@@ -1,7 +1,7 @@
-import { DriversCourses } from "../../db/models/driversCourses";
+import { DriversRaces } from "../../db/models/driversRaces";
 import { Request, Response, NextFunction } from "express";
 import { successMessage, errorMessage } from "../../functions/messageResponse";
-export async function getDriversCoursesByDriverId(
+export async function getDriversRacesByDriverId(
   req: Request,
   res: Response,
   next: NextFunction
@@ -9,20 +9,20 @@ export async function getDriversCoursesByDriverId(
   try {
     const id: number = parseInt(req.params.id);
     if (typeof id !== "number") throw new Error("No id provided");
-    const driversCourses: Array<DriversCourses> | null =
-      await DriversCourses.findAll({
+    const driversRaces: Array<DriversRaces> | null =
+      await DriversRaces.findAll({
         where: {
           DriverId: id,
         },
       });
-    if (driversCourses === null)
+    if (driversRaces === null)
       throw new Error(`Driver with id ${id} not found`);
     res
       .status(200)
       .json(
         successMessage(
-          `DriversCourses successfully found with DriverId ${id}`,
-          driversCourses
+          `DriversRaces successfully found with DriverId ${id}`,
+          driversRaces
         )
       );
   } catch (err: any) {

@@ -4,13 +4,13 @@ import { Competition, initializeCompetition } from "./models/competition";
 import { Team, initializationTeam } from "./models/team";
 import { Circuit, initializationCircuit } from "./models/circuit";
 import { Driver, initializationDriver } from "./models/driver";
-import { Course, initializationCourse } from "./models/course";
+import { Race, initializationRace } from "./models/race";
 import { User, initializationUser } from "./models/user";
 import { Ranking, initializationRanking } from "./models/ranking";
 import {
-  DriversCourses,
-  initializationDriversCourses,
-} from "./models/driversCourses";
+  DriversRaces,
+  initializationDriversRaces,
+} from "./models/driversRaces";
 
 const DB_NAME: string = process.env.DB_NAME as string;
 const DB_USERNAME: string = process.env.DB_USERNAME as string;
@@ -50,13 +50,13 @@ async function Association() {
     targetKey: "id",
     foreignKey: "competitionId",
   });
-  Driver.belongsToMany(Course, { through: DriversCourses });
-  Course.belongsToMany(Driver, { through: DriversCourses });
-  Competition.hasMany(Course, {
+  Driver.belongsToMany(Race, { through: DriversRaces });
+  Race.belongsToMany(Driver, { through: DriversRaces });
+  Competition.hasMany(Race, {
     sourceKey: "id",
     foreignKey: "competitionId",
   });
-  Course.belongsTo(Competition, {
+  Race.belongsTo(Competition, {
     targetKey: "id",
     foreignKey: "competitionId",
   });
@@ -73,14 +73,14 @@ export async function dbConnection(): Promise<void> {
     Circuit.sync();
     initializationDriver();
     Driver.sync();
-    initializationCourse();
-    Course.sync();
+    initializationRace();
+    Race.sync();
     initializationUser();
     User.sync();
     initializationRanking();
     Ranking.sync();
-    initializationDriversCourses();
-    DriversCourses.sync();
+    initializationDriversRaces();
+    DriversRaces.sync();
     Association();
   } catch (error) {
     console.error("Unable to connect to the database:", error);

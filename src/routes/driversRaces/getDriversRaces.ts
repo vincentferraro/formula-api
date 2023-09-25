@@ -1,18 +1,18 @@
-import { DriversCourses } from "../../db/models/driversCourses";
+import { DriversRaces } from "../../db/models/driversRaces";
 import { Request, Response, NextFunction } from "express";
 import { successMessage, errorMessage } from "../../functions/messageResponse";
-export async function getDriversCourses(
+export async function getDriversRaces(
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> {
   try {
-    const driversCourses: Array<DriversCourses> =
-      await DriversCourses.findAll();
+    const driversRaces: Array<DriversRaces> =
+      await DriversRaces.findAll();
     res
       .status(200)
       .json(
-        successMessage("DriversCourses successfully found", driversCourses)
+        successMessage("DriversRaces successfully found", driversRaces)
       );
   } catch (err: any) {
     res.status(400).json(err.message);

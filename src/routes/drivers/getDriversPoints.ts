@@ -1,5 +1,5 @@
 import { Driver } from "../../db/models/driver";
-import { Course } from "../../db/models/course";
+import { Race } from "../../db/models/race";
 import { Ranking } from "../../db/models/ranking";
 import { Competition } from "../../db/models/competition";
 import { Request, Response, NextFunction } from "express";
@@ -11,7 +11,7 @@ export async function getDriversPoints(req: Request, res: Response, next: NextFu
         const driversPoints : Array<DriverPoints> = []
         const drivers: Array<Driver> | null = await Driver.findAll({
             include: {
-              model: Course,
+              model: Race,
               include: [
                 {
                   model: Competition,

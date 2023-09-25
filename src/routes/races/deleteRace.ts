@@ -1,7 +1,7 @@
-import { Course } from "../../db/models/course";
+import { Race } from "../../db/models/race";
 import { Request, Response, NextFunction } from "express";
 
-export async function deleteCourse(
+export async function deleteRace(
   req: Request,
   res: Response,
   next: NextFunction
@@ -9,9 +9,9 @@ export async function deleteCourse(
   try {
     const id: number = parseInt(req.params.id);
     if (typeof id !== "number") throw new Error("No id provided");
-    const course: Course | null = await Course.findByPk(id);
-    if (course === null) throw new Error(`Course with id ${id} not found`);
-    await course.destroy();
+    const race: Race | null = await Race.findByPk(id);
+    if (race === null) throw new Error(`Race with id ${id} not found`);
+    await race.destroy();
     res.status(204).json();
   } catch (err: any) {
     res.status(400).json(err.message);

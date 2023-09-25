@@ -2,7 +2,7 @@ import { expect, test } from "vitest";
 import { dbConnection } from "../../db";
 import { calculPoints } from "../../functions/calculPoints";
 import { Ranking } from "../../db/models/ranking";
-import { Course } from "../../db/models/course";
+import { Race } from "../../db/models/race";
 import { Driver } from "../../db/models/driver";
 import { Competition } from "../../db/models/competition";
 
@@ -14,7 +14,7 @@ let driver: any | null
         rankingArray = await Ranking.findAll()
         driver = await Driver.findByPk(1, {
             include: {
-              model: Course,
+              model: Race,
               include: [
                 {
                   model: Competition,
@@ -27,6 +27,6 @@ let driver: any | null
         console.log(err)
     }
 
-    expect(await calculPoints(rankingArray,driver.Courses)).toEqual(expect.any(Number))
+    expect(await calculPoints(rankingArray,driver.Races)).toEqual(expect.any(Number))
 
 })

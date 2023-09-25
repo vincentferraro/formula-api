@@ -7,9 +7,9 @@ import {
 } from "sequelize";
 import { sequelize } from "../index";
 
-export class Course extends Model<
-  InferAttributes<Course>,
-  InferCreationAttributes<Course>
+export class Race extends Model<
+  InferAttributes<Race>,
+  InferCreationAttributes<Race>
 > {
   declare id: CreationOptional<number>;
   declare name: string;
@@ -19,8 +19,8 @@ export class Course extends Model<
   declare round: string;
 }
 
-export async function initializationCourse(): Promise<void> {
-  Course.init(
+export async function initializationRace(): Promise<void> {
+  Race.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -50,7 +50,7 @@ export async function initializationCourse(): Promise<void> {
     },
     {
       sequelize,
-      tableName: "courses",
+      tableName: "races",
       timestamps: false,
     }
   );

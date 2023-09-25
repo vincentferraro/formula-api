@@ -1,14 +1,14 @@
-import { Course } from "../db/models/course";
+import { Race } from "../db/models/race";
 import { Driver } from "../db/models/driver";
 import { Ranking } from "../db/models/ranking";
 import { calculPoints } from "./calculPoints";
 
 // TO DO: Resole this typing issues for the DriverWithPoints function
 
-// interface DriverCourses extends Driver{
-//     Courses : Array<CourseCompetition>
+// interface DriverRaces extends Driver{
+//     Races : Array<RaceCompetition>
 // }
-// interface CourseCompetition extends Course {
+// interface RaceCompetition extends Race {
 //     competition: Array<Ranking>
 // }
 // interface Rankings extends Array<Ranking>{
@@ -17,8 +17,8 @@ import { calculPoints } from "./calculPoints";
 
 export async function DriverWithPoints(driver: any):Promise<any>{
     const points: number = await calculPoints(
-        driver.Courses[0].competition.Rankings,
-        driver.Courses
+        driver.Races[0].competition.Rankings,
+        driver.Races
       );
       
       

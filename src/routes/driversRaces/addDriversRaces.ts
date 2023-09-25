@@ -1,23 +1,23 @@
-import { DriversCourses } from "../../db/models/driversCourses";
+import { DriversRaces } from "../../db/models/driversRaces";
 import { Request, Response, NextFunction } from "express";
 import { successMessage, errorMessage } from "../../functions/messageResponse";
-export async function addDriversCourses(
+export async function addDriversRaces(
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> {
   try {
-    const input: DriversCourses = req.body;
+    const input: DriversRaces = req.body;
     if (Object.keys(input).length === 0) throw new Error(" Missing input");
-    const driversCourses: DriversCourses = await DriversCourses.create({
+    const driversRaces: DriversRaces = await DriversRaces.create({
       DriverId: input?.DriverId,
-      CourseId: input?.CourseId,
+      RaceId: input?.RaceId,
       rank: input?.rank,
     });
     res
       .status(200)
       .json(
-        successMessage("DriversCourses successfully added", driversCourses)
+        successMessage("DriversRaces successfully added", driversRaces)
       );
   } catch (err: any) {
     res.status(400).json(err.message);

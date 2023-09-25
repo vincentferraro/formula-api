@@ -9,7 +9,7 @@ export async function addCircuit(
   try {
     const input: Circuit = req.body;
     if (Object.keys(input).length === 0) throw new Error("Missing input");
-
+    
     const circuit: Circuit = await Circuit.create({
       name: input?.name,
       location: input?.location,
