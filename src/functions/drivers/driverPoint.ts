@@ -17,7 +17,6 @@ export async function driverPoints(id: number):Promise<any>{
             },
           });
           if (driver === null) throw new Error(`Driver with id ${id} not found`);
-
           //Calculate driver's points
           const driverWithPoints = await DriverWithPoints(driver)
           return driverWithPoints

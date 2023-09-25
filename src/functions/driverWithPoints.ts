@@ -1,7 +1,7 @@
 import { Course } from "../db/models/course";
 import { Driver } from "../db/models/driver";
 import { Ranking } from "../db/models/ranking";
-import { calculPoint } from "./calculRank";
+import { calculPoints } from "./calculPoints";
 
 // TO DO: Resole this typing issues for the DriverWithPoints function
 
@@ -16,7 +16,7 @@ import { calculPoint } from "./calculRank";
 // }
 
 export async function DriverWithPoints(driver: any):Promise<any>{
-    const points: number = await calculPoint(
+    const points: number = await calculPoints(
         driver.Courses[0].competition.Rankings,
         driver.Courses
       );
