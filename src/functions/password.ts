@@ -10,15 +10,3 @@ export function generatePassword(password: string, user: User): void {
     user.save();
   });
 }
-
-// export function decryptPassword(password: string, user: User): Boolean {
-//   bcrypt.compare(password, user.password, (err, result) => {
-//     if (result) {
-//       console.log("true");
-//       return true;
-//     } else {
-//       console.log("false");
-//       return false;
-//     }
-//   });
-// }
