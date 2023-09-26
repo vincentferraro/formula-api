@@ -13,6 +13,7 @@ import { Request, Response, NextFunction } from "express";
 //   "/teams/:id",
 // ];
 
+// Verify that the user has permission to access the requested route
 export async function hasRights(
   req: Request,
   res: Response,
@@ -25,9 +26,14 @@ export async function hasRights(
       next();
     } else if (res.locals.role === "READER") {
       if (req.method === "GET") {
-        next();
+        if(req.path === "/users/"){
+          res.status(403).json("access forbidden, you must be ADMIN to have access");
+        }else{
+          next();
+        }
+        
       } else {
-        res.status(403).json("access forbidden");
+        res.status(403).json("access forbidden, you must be ADMIN to have access");
       }
     } else {
       res.status(403).json("access forbidden");

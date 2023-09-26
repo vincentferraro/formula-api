@@ -12,11 +12,12 @@ const router: Router = Router();
 // TEAM ROUTES
 
 router.post("/", addUser);
-router.get("/:id", getUserById);
 router.get("/", getUsers);
 router.post("/signin", postSignIn);
+router.put("/password", updatePassword);
+router.get("/:id", getUserById);
 router.put("/:id", updateUser);
-router.post("/password", updatePassword);
+
 router.delete("/:id", deleteUser);
 
 export default router;
