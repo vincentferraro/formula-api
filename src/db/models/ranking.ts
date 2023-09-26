@@ -29,14 +29,17 @@ export async function initializationRanking(): Promise<void> {
       rank: {
         field: "rank",
         type: DataTypes.INTEGER,
+        allowNull: false
       },
       point: {
         field: "point",
         type: DataTypes.INTEGER,
+        allowNull: false
       },
       competitionId: {
         field: "competition_id",
         type: DataTypes.INTEGER,
+        allowNull: false
       },
     },
     {
