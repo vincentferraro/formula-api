@@ -12,6 +12,10 @@ export async function updatePassword(
     const input: UserNewPassword = req.body;
     if (input.username === null && input.password === null)
       throw new Error(`No username and password provided`);
+    //Verify if user has right to change password from other users
+    if(res.locals.role === "READER"){
+      if(req.headers.username !== input.username) throw new Error(`Username header and body are not the same`);
+    }
     const user = await User.findOne({
       where: {
         username: input.username,
