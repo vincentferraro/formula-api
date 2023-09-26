@@ -25,18 +25,26 @@ export async function hasRights(
     if (res.locals.role === "ADMIN") {
       next();
     } else if (res.locals.role === "READER") {
-      if (req.method === "GET") {
-        if(req.path === "/users/"){
-          res.status(403).json("access forbidden, you must be ADMIN to have access");
-        }else{
-          next();
-        }
-        
-      } else {
-        res.status(403).json("access forbidden, you must be ADMIN to have access");
+      switch(req.method){
+        case 'PUT':
+          if(req.path === "/users/password/"){
+            next();
+          }
+          break;
+        case 'GET':
+          if(req.path.includes("/users/")){
+            res.status(403).json("access forbidden, you must be ADMIN to have access");
+          }else{
+            next();
+          }
+          break;
+        default:
+            res.status(403).json("Access denied, verify the following parameters: TOKEN, USERNAME, PASSWORD, PERMISSIONS (ADMIN OR READER)");
       }
+      
+      
     } else {
-      res.status(403).json("access forbidden");
+      res.status(403).json("Access denied, verify the following parameters: TOKEN, USERNAME, PASSWORD, PERMISSIONS (ADMIN OR READER)");
     }
   }
 }

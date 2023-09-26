@@ -8,8 +8,7 @@ export async function verifyToken(
   try {
     if (
       req.path === "/users/signin" ||
-      req.path === "/users/" && req.method !== "GET" ||
-      req.path === "/users/password/" 
+      req.path === "/users/" && req.method !== "GET"
     ) {
       res.locals.signin = true;
       next();
