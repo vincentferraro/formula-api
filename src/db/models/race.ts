@@ -30,22 +30,27 @@ export async function initializationRace(): Promise<void> {
       name: {
         field: "name",
         type: DataTypes.TEXT,
+        allowNull:false
       },
       year: {
         field: "year",
         type: DataTypes.INTEGER,
+        allowNull:false
       },
       round: {
         field: "round",
         type: DataTypes.INTEGER,
+        allowNull:false
       },
       circuitId: {
         field: "circuit_id",
         type: DataTypes.INTEGER,
+        allowNull:false
       },
       competitionId: {
         field: "competition_id",
         type: DataTypes.INTEGER,
+        allowNull:false
       },
     },
     {

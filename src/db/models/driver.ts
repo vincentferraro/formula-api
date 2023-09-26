@@ -30,18 +30,22 @@ export async function initializationDriver(): Promise<void> {
       firstName: {
         field: "first_name",
         type: DataTypes.TEXT,
+        allowNull:false
       },
       lastName: {
         field: "last_name",
         type: DataTypes.TEXT,
+        allowNull:false
       },
       number: {
         field: "number",
         type: DataTypes.INTEGER,
+        allowNull:false
       },
       teamId: {
         field: "team_id",
         type: DataTypes.INTEGER,
+        allowNull:false
       },
     },
     {

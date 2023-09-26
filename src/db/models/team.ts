@@ -28,14 +28,17 @@ export function initializationTeam(): void {
       name: {
         field: "name",
         type: DataTypes.TEXT,
+        allowNull:false
       },
       location: {
         field: "location",
         type: DataTypes.TEXT,
+        allowNull:false
       },
       competitionId: {
         field: "competition_id",
         type: DataTypes.INTEGER,
+        allowNull:false
       },
     },
     {

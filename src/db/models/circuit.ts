@@ -28,10 +28,12 @@ export function initializationCircuit(): void {
       name: {
         field: "name",
         type: DataTypes.TEXT,
+        allowNull:false
       },
       location: {
         field: "localisation",
         type: DataTypes.TEXT,
+        allowNull:false
       },
       length: {
         field: "length",

@@ -35,6 +35,7 @@ export async function initializationDriversRaces(): Promise<void> {
           model: Driver,
           key: "id",
         },
+        allowNull:false
       },
       RaceId: {
         field: "race_id",
@@ -43,10 +44,12 @@ export async function initializationDriversRaces(): Promise<void> {
           model: Race,
           key: "id",
         },
+        allowNull:false
       },
       rank: {
         field: "rank",
         type: DataTypes.INTEGER,
+        allowNull:false
       },
     },
     {
