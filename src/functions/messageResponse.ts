@@ -21,9 +21,11 @@ export function successMessage(
   obj?:
     | Driver
     | Circuit
-    | Competition
+    |Array<Circuit>
     | Race
     | Ranking
+    | Competition
+    | Array<Competition>
     | Array<Ranking>
     | Team
     | User
@@ -33,7 +35,9 @@ export function successMessage(
 ): objectResponse<
   | Driver
   | Circuit
+  |Array<Circuit>
   | Competition
+  | Array<Competition>
   | Race
   | Ranking
   | Array<Ranking>

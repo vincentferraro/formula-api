@@ -1,6 +1,6 @@
 import { Circuit } from "../../db/models/circuit";
 import { Request, Response, NextFunction } from "express";
-
+import { errorMessage, successMessage } from "../../functions/messageResponse";
 export async function updateCircuit(
   req: Request,
   res: Response,
@@ -17,7 +17,7 @@ export async function updateCircuit(
 
     await circuit.update({ ...updateCircuit });
 
-    res.status(200).json(circuit);
+    res.status(200).json(successMessage(`Circuit ${circuit.id} successfully updated`,circuit));
 
     // TODO : Manage attribute type during INSERTION length must be FLOAT
   } catch (err: any) {

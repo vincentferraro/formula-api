@@ -1,5 +1,6 @@
 import { Circuit } from "../../db/models/circuit";
 import { Request, Response, NextFunction } from "express";
+import { errorMessage, successMessage } from "../../functions/messageResponse";
 
 export async function getCircuits(
   req: Request,
@@ -8,8 +9,8 @@ export async function getCircuits(
 ): Promise<void> {
   try {
     const circuits: Array<Circuit> = await Circuit.findAll();
-    res.status(200).json(circuits);
+    res.status(200).json(successMessage('Circuits successfully displayed',circuits));
   } catch (err: any) {
-    res.status(400).send(err.message);
+    res.status(400).send(errorMessage(err.message));
   }
 }

@@ -1,6 +1,6 @@
 import { Competition } from "../../db/models/competition";
 import { Request, Response, NextFunction } from "express";
-
+import { errorMessage, successMessage } from "../../functions/messageResponse";
 export async function getCompetitionById(
   req: Request,
   res: Response,
@@ -9,11 +9,11 @@ export async function getCompetitionById(
   try {
     const id: number = parseInt(req.params.id);
     if (!id) {
-      throw new Error("NO ID");
+      throw new Error("No id provided");
     }
     const competition = (await Competition.findByPk(id)) as Competition;
-    res.status(200).json(competition);
-  } catch (err) {
-    next(err);
+    res.status(200).json(successMessage('Competition successfully displayed',competition));
+  } catch (err: any) {
+    res.status(400).json(errorMessage(err.message))
   }
 }

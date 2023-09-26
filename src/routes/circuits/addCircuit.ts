@@ -1,6 +1,6 @@
 import { Circuit } from "../../db/models/circuit";
 import { Request, Response, NextFunction } from "express";
-
+import { errorMessage, successMessage } from "../../functions/messageResponse";
 export async function addCircuit(
   req: Request,
   res: Response,
@@ -15,8 +15,8 @@ export async function addCircuit(
       location: input?.location,
       length: input?.length,
     });
-    res.status(200).json(circuit);
+    res.status(200).json(successMessage('Circuit successfully added',circuit));
   } catch (err: any) {
-    res.status(400).json(err.message);
+    res.status(400).json(errorMessage(err.message));
   }
 }
