@@ -8,7 +8,7 @@ test("test TeamPoints function", async ()=>{
         console.log(err)
     }
 
-    expect(await teamPoint(1)).toEqual(expect.objectContaining({
+    expect(await teamPoint(2)).toEqual(expect.objectContaining({
         id: expect.any(Number),
         name: expect.any(String),
         location: expect.any(String),
