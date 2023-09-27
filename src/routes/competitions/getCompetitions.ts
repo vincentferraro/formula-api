@@ -8,8 +8,8 @@ export async function getCompetitions(
 ): Promise<void> {
   try {
     const competition = await Competition.findAll();
-    res.status(200).json(successMessage('Competitions successfully displayed',competition));
+    res.status(200).json(successMessage('Competitions found successfully',competition));
   } catch (err) {
-    res.status(400).send("ERROR");
+    res.status(400).json(errorMessage(err));
   }
 }

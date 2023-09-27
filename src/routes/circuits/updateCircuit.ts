@@ -13,14 +13,14 @@ export async function updateCircuit(
     if (typeof id !== "number") throw new Error("No id provided");
 
     const circuit: Circuit | null = await Circuit.findByPk(id);
-    if (circuit === null) throw new Error(`Team with id ${id} not found`);
+    if (circuit === null) throw new Error(`Circuit with id ${id} not found`);
 
     await circuit.update({ ...updateCircuit });
 
     res.status(200).json(successMessage(`Circuit with id ${circuit.id} updated successfully `,circuit));
 
-    // TODO : Manage attribute type during INSERTION length must be FLOAT
+  
   } catch (err: any) {
-    res.status(400).json(err.message);
+    res.status(400).json(errorMessage(err));
   }
 }

@@ -11,7 +11,7 @@ export async function getRankings(
     const ranking: Array<Ranking> = await Ranking.findAll();
     res
       .status(200)
-      .json(successMessage("Rankings successfully found", ranking));
+      .json(successMessage("Rankings found successfully", ranking));
   } catch (err: any) {
     res.status(400).json(errorMessage(err));
   }

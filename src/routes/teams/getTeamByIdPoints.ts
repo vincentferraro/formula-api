@@ -1,8 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import { successMessage, errorMessage } from "../../functions/messageResponse";
-// import { Team } from "../../db/models/team";
-// import { Driver } from "../../db/models/driver";
-// import { TeamDrivers } from "../../*";
 import { teamPoint } from "../../functions/teams/teamPoints";
 
 
@@ -12,9 +9,9 @@ export async function getTeamByIdPoints(req: Request, res: Response, next: NextF
         if (typeof id !== "number") throw new Error("No id provided");
         
         const result = await teamPoint(id)
-        if(result instanceof Error) throw Error(result.message)
+        if(result instanceof Error) throw result
         
-        res.status(200).json(successMessage('Team with points successfully displayed',result))
+        res.status(200).json(successMessage('Team with points found successfully',result))
     }catch(err){
         res.status(400).json(errorMessage(err))
     }

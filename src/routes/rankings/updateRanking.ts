@@ -14,7 +14,7 @@ export async function updateRanking(
     const ranking: Ranking | null = await Ranking.findByPk(id);
     if (ranking === null) throw new Error(`Ranking with id ${id} not found`);
     await ranking.update({ ...input });
-    res.status(204).json(successMessage("Ranking successfully updated"));
+    res.status(200).json(successMessage(`Ranking with id ${id} updated successfully`, ranking));
   } catch (err: any) {
     res.status(400).json(errorMessage(err));
   }

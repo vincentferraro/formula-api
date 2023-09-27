@@ -17,6 +17,6 @@ export async function addDriver(
     });
     res.status(200).json(successMessage(`Driver added successfully`, driver));
   } catch (err: any) {
-    res.status(400).json(errorMessage(err.message));
+    res.status(400).json(errorMessage(err));
   }
 }

@@ -15,6 +15,6 @@ export async function getDriversRaces(
         successMessage("DriversRaces found successfully", driversRaces)
       );
   } catch (err: any) {
-    res.status(400).json(errorMessage(err.message));
+    res.status(400).json(errorMessage(err));
   }
 }

@@ -1,6 +1,6 @@
 import { Circuit } from "../../db/models/circuit";
 import { Request, Response, NextFunction } from "express";
-import { errorMessage } from "../../functions/messageResponse";
+import { errorMessage, successMessage } from "../../functions/messageResponse";
 export async function deleteCircuit(
   req: Request,
   res: Response,
@@ -12,7 +12,7 @@ export async function deleteCircuit(
     const circuit: Circuit | null = await Circuit.findByPk(id);
     if (circuit === null) throw new Error(`Circuit with id ${id} not found`);
     circuit.destroy();
-    res.status(204).json();
+    res.status(200).json(successMessage(`Circuit with id ${id} removed successfully`));
   } catch (err: any) {
     res.status(400).json(errorMessage(err));
   }

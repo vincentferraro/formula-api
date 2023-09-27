@@ -14,7 +14,7 @@ export async function addRanking(
       point: input?.point,
       competitionId: input?.competitionId,
     });
-    res.status(200).json(successMessage("Ranking successfully added", ranking));
+    res.status(200).json(successMessage("Ranking added successfully", ranking));
   } catch (err: any) {
     res.status(400).json(errorMessage(err));
   }

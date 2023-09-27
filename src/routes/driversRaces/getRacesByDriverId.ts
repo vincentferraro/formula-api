@@ -26,6 +26,6 @@ export async function getDriversRacesByDriverId(
         )
       );
   } catch (err: any) {
-    res.status(400).json(errorMessage(err.message));
+    res.status(400).json(errorMessage(err));
   }
 }

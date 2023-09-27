@@ -12,7 +12,7 @@ export async function deleteRanking(
     const ranking: Ranking | null = await Ranking.findByPk(id);
     if (ranking === null) throw new Error(`Ranking with id ${id} not found`);
     await ranking.destroy();
-    res.status(204).json(successMessage("Ranking successfully removed"));
+    res.status(200).json(successMessage(`Ranking with id ${id}removed successfully`));
   } catch (err: any) {
     res.status(400).json(errorMessage(err));
   }

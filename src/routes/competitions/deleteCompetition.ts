@@ -1,7 +1,7 @@
 import { IsNull } from "sequelize-typescript";
 import { Competition } from "../../db/models/competition";
 import { Request, Response, NextFunction } from "express";
-import { errorMessage } from "../../functions/messageResponse";
+import { errorMessage, successMessage } from "../../functions/messageResponse";
 export async function deleteCompetition(
   req: Request,
   res: Response,
@@ -18,7 +18,7 @@ export async function deleteCompetition(
     }
 
     await competition.destroy();
-    res.status(204).send();
+    res.status(200).send(successMessage(`Competition with id ${id} removed successfully`));
   } catch (err: any) {
     res.status(400).json(errorMessage(err));
   }

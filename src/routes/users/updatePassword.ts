@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import { UserNewPassword } from "../../interfaces/userPassword";
 import { generatePassword } from "../../functions/password";
 import bcrypt from "bcrypt";
+import { successMessage, errorMessage } from "../../functions/messageResponse";
 export async function updatePassword(
   req: Request,
   res: Response,
@@ -29,10 +30,8 @@ export async function updatePassword(
     if (passwordDecrypted === false) throw new Error(`Password error`);
     generatePassword(input.newPassword, user);
 
-    res.status(200).json({
-      message: `password has been successfully changed`,
-    });
+    res.status(200).json(successMessage(`password updated successfully`));
   } catch (err: any) {
-    res.status(400).json(err.message);
+    res.status(400).json(errorMessage(err));
   }
 }

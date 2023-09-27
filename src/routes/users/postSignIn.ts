@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from "express";
 // import { decryptPassword } from "../../functions/password";
 import bcrypt from "bcrypt";
 import { generateToken } from "../../functions/token";
+import { errorMessage } from "../../functions/messageResponse";
 export async function postSignIn(
   req: Request,
   res: Response,
@@ -32,6 +33,6 @@ export async function postSignIn(
       token: user.token,
     });
   } catch (err: any) {
-    res.status(400).json(err.message);
+    res.status(400).json(errorMessage(err));
   }
 }

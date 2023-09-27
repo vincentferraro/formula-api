@@ -17,8 +17,8 @@ export async function updateCompetition(
     if(competition === null) throw new Error(`Competition with id ${id} not found`)
     competition?.update(input)
     
-    res.status(200).json(successMessage(`Competition with id ${competition.id} successfully updated`, competition))
+    res.status(200).json(successMessage(`Competition with id ${competition.id} updated successfully`, competition))
   } catch (err:any) {
-    res.status(400).json(errorMessage(err.message))
+    res.status(400).json(errorMessage(err))
   }
 }

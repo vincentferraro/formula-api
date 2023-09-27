@@ -11,6 +11,6 @@ export async function getDrivers(
     const drivers: Array<Driver> = await Driver.findAll();
     res.status(200).json(successMessage(`Drivers found successfully`,drivers));
   } catch (err: any) {
-    res.status(400).json(errorMessage(err.message));
+    res.status(400).json(errorMessage(err));
   }
 }

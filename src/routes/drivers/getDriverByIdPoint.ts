@@ -11,9 +11,10 @@ export async function getDriverByIdWithPoints(
     const id: number = parseInt(req.params.id);
     if (typeof id !== "number") throw new Error("No id provided");
     const driverWithPoints = await driverPoints(id)
+    if(driverWithPoints instanceof Error) throw driverWithPoints
     res.status(200).json(successMessage(`Driver with points found successfully`,driverWithPoints));
-    // res.status(204).json(driver);
+    
   } catch (err: any) {
-    res.status(400).json(errorMessage(err.message));
+    res.status(400).json(errorMessage(err));
   }
 }

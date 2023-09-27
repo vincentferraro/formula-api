@@ -20,6 +20,6 @@ export async function addDriversRaces(
         successMessage("DriversRaces added successfully", driversRaces)
       );
   } catch (err: any) {
-    res.status(400).json(err.message);
+    res.status(400).json(errorMessage(err));
   }
 }

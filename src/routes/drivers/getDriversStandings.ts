@@ -35,9 +35,9 @@ export async function getDriversStandings(req: Request, res: Response, next: Nex
 
         const ranking: Array<DriverPoints>  = await displayStandings(driversPoints, true)
 
-        res.status(200).json(successMessage("Ranking successfully displayed",ranking))
+        res.status(200).json(successMessage("Standings found successfully",ranking))
 
     }catch(err: any){
-        res.status(400).json(errorMessage(err.message))
+        res.status(400).json(errorMessage(err))
     }
 }

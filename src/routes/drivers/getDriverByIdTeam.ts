@@ -17,6 +17,6 @@ export async function getDriverByIdTeam(
     if (driver === null) throw new Error(`Driver with id ${id} not found`);
     res.status(200).json(successMessage(`Driver with id ${id} with Team found successfully`,driver));
   } catch (err: any) {
-    res.status(400).json(errorMessage(err.message));
+    res.status(400).json(errorMessage(err));
   }
 }

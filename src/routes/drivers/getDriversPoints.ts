@@ -27,6 +27,6 @@ export async function getDriversPoints(req: Request, res: Response, next: NextFu
           }
           res.status(200).json(successMessage(`Drivers with Points found successfully`,driversPoints))
     }catch(err: any){
-        res.status(400).json(errorMessage(err.message))
+        res.status(400).json(errorMessage(err))
     }
 }

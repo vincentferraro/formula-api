@@ -4,8 +4,8 @@ import { errorMessage, successMessage } from "../../functions/messageResponse";
 export async function getTeamsStandings(req: Request, res: Response, next: NextFunction): Promise<void>{
     try{
         const result = await teamStandings()
-        if(result instanceof Error) throw Error(result.message)
-        res.status(200).json(successMessage("Standings successfully displayed", result))
+        if(result instanceof Error) throw result
+        res.status(200).json(successMessage("Teams Standing found successfully", result))
     }catch(err){
         res.status(400).json(errorMessage(err))
     }

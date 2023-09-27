@@ -32,6 +32,7 @@ export function successMessage(
     | Array<Ranking>
     | Team
     | User
+    | Array<User>
     | DriversRaces
     | Array<DriversRaces>
     |Array<DriverPoints>
@@ -47,6 +48,7 @@ export function successMessage(
   | Array<Ranking>
   | Team
   | User
+  | Array<User>
   | DriversRaces
   | Array<DriversRaces>
   |Array<DriverPoints>

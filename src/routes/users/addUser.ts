@@ -2,6 +2,7 @@ import { User } from "../../db/models/user";
 import { Request, Response, NextFunction } from "express";
 import { generatePassword } from "../../functions/password";
 import { generateToken } from "../../functions/token";
+import { successMessage, errorMessage } from "../../functions/messageResponse";
 export async function addUser(
   req: Request,
   res: Response,
@@ -24,11 +25,8 @@ export async function addUser(
       token,
     });
     generatePassword(input.password, newUser);
-    res.status(200).json({
-      message: "User Created",
-      data: newUser,
-    });
+    res.status(200).json(successMessage(`User created successfully`,newUser));
   } catch (err: any) {
-    res.status(400).json(err.message);
+    res.status(400).json(errorMessage(err));
   }
 }

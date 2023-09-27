@@ -12,7 +12,7 @@ export async function getRankingByCompetitionID(req: Request, res: Response, nex
             }
         })
         if (rankings.length === 0) throw new Error(`Rankings not available because Competition with id ${id} not found`);
-        res.status(200).json(rankings)
+        res.status(200).json(successMessage(`Rankings with Competition id ${id} found successfully`,rankings))
     }catch(err){
         res.status(400).json(errorMessage(err))
     }
