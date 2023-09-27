@@ -1,6 +1,6 @@
 import { Competition } from "../../db/models/competition";
 import { Request, Response, NextFunction } from "express";
-import { successMessage } from "../../functions/messageResponse";
+import { successMessage, errorMessage } from "../../functions/messageResponse";
 
 export async function updateCompetition(
   req: Request,
@@ -19,6 +19,6 @@ export async function updateCompetition(
     
     res.status(200).json(successMessage(`Competition with id ${competition.id} successfully updated`, competition))
   } catch (err:any) {
-    res.status(400).json(err.message)
+    res.status(400).json(errorMessage(err.message))
   }
 }

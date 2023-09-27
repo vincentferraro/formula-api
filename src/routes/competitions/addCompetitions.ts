@@ -10,6 +10,6 @@ export async function addCompetition(
   Competition.create({
     name: input.name,
   })
-    .then((result) => res.status(200).send(successMessage('Competition successfully added',result)))
+    .then((result) => res.status(200).send(successMessage('Competition added successfully',result)))
     .catch((err) => res.send(errorMessage(err)));
 }

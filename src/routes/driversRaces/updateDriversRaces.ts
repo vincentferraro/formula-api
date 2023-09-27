@@ -1,6 +1,6 @@
 import { DriversRaces } from "../../db/models/driversRaces";
 import { Request, Response, NextFunction } from "express";
-
+import { errorMessage } from "../../functions/messageResponse";
 export async function updateDriversRaces(
   req: Request,
   res: Response,
@@ -19,6 +19,6 @@ export async function updateDriversRaces(
     await driverRaces.update({ ...input });
     res.status(204).json();
   } catch (err: any) {
-    res.status(400).json(err.message);
+    res.status(400).json(errorMessage(err.message));
   }
 }

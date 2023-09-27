@@ -9,7 +9,7 @@ export async function getCircuits(
 ): Promise<void> {
   try {
     const circuits: Array<Circuit> = await Circuit.findAll();
-    res.status(200).json(successMessage('Circuits successfully displayed',circuits));
+    res.status(200).json(successMessage('Circuits found successfully',circuits));
   } catch (err: any) {
     res.status(400).send(errorMessage(err.message));
   }

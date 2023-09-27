@@ -11,9 +11,10 @@ export async function getCompetitionById(
     if (!id) {
       throw new Error("No id provided");
     }
-    const competition = (await Competition.findByPk(id)) as Competition;
+    const competition = await Competition.findByPk(id) as Competition;
+    if(competition === null)  throw new Error(`Competition with id ${id} not found`);
     res.status(200).json(successMessage('Competition successfully displayed',competition));
   } catch (err: any) {
-    res.status(400).json(errorMessage(err.message))
+    res.status(400).json(errorMessage(err))
   }
 }

@@ -12,9 +12,9 @@ export async function getDriversRaces(
     res
       .status(200)
       .json(
-        successMessage("DriversRaces successfully found", driversRaces)
+        successMessage("DriversRaces found successfully", driversRaces)
       );
   } catch (err: any) {
-    res.status(400).json(err.message);
+    res.status(400).json(errorMessage(err.message));
   }
 }

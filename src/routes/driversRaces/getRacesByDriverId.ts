@@ -21,11 +21,11 @@ export async function getDriversRacesByDriverId(
       .status(200)
       .json(
         successMessage(
-          `DriversRaces successfully found with DriverId ${id}`,
+          `DriversRaces with DriverId ${id} found successfully`,
           driversRaces
         )
       );
   } catch (err: any) {
-    res.status(400).json(errorMessage(err));
+    res.status(400).json(errorMessage(err.message));
   }
 }

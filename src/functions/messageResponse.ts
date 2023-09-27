@@ -9,10 +9,12 @@ import { DriversRaces } from "../db/models/driversRaces";
 import { DriverPoints } from "../*";
 
 interface objectResponse<T> {
+  status: string;
   message: string;
   data?: T;
 }
 interface ErrorResponse {
+  status: string;
   message: string;
 }
 
@@ -20,6 +22,7 @@ export function successMessage(
   message: string,
   obj?:
     | Driver
+    |Array<Driver>
     | Circuit
     |Array<Circuit>
     | Race
@@ -34,6 +37,7 @@ export function successMessage(
     |Array<DriverPoints>
 ): objectResponse<
   | Driver
+  |Array<Driver>
   | Circuit
   |Array<Circuit>
   | Competition
@@ -48,6 +52,7 @@ export function successMessage(
   |Array<DriverPoints>
 > {
   return {
+    status: 'SUCCESS',
     message: message,
     data: obj,
   };
@@ -55,6 +60,7 @@ export function successMessage(
 
 export function errorMessage(err: any): ErrorResponse {
   return {
+    status: 'ERROR',
     message: err.message,
   };
 }

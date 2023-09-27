@@ -37,7 +37,7 @@ export async function getDriversStandings(req: Request, res: Response, next: Nex
 
         res.status(200).json(successMessage("Ranking successfully displayed",ranking))
 
-    }catch(err){
-        res.status(400).json(errorMessage(err))
+    }catch(err: any){
+        res.status(400).json(errorMessage(err.message))
     }
 }

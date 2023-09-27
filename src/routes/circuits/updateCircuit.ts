@@ -17,7 +17,7 @@ export async function updateCircuit(
 
     await circuit.update({ ...updateCircuit });
 
-    res.status(200).json(successMessage(`Circuit ${circuit.id} successfully updated`,circuit));
+    res.status(200).json(successMessage(`Circuit with id ${circuit.id} updated successfully `,circuit));
 
     // TODO : Manage attribute type during INSERTION length must be FLOAT
   } catch (err: any) {

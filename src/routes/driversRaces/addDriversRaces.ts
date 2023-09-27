@@ -17,7 +17,7 @@ export async function addDriversRaces(
     res
       .status(200)
       .json(
-        successMessage("DriversRaces successfully added", driversRaces)
+        successMessage("DriversRaces added successfully", driversRaces)
       );
   } catch (err: any) {
     res.status(400).json(err.message);

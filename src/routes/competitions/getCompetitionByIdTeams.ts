@@ -15,8 +15,9 @@ export async function getCompetitionByIdTeams(
     const competition = await Competition.findByPk(id, {
       include: Team,
     });
-    res.status(200).json(successMessage('Competition with Team successfully displayed',competition as Competition));
+    if(competition === null)  throw new Error(`Competition with Team with id ${id} not found`);
+    res.status(200).json(successMessage('Competition with Team found successfully',competition as Competition));
   } catch (err: any) {
-    res.status(400).json(errorMessage(err.message))
+    res.status(400).json(errorMessage(err))
   }
 }

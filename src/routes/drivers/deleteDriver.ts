@@ -1,6 +1,6 @@
 import { Driver } from "../../db/models/driver";
 import { Request, Response, NextFunction } from "express";
-
+import { errorMessage } from "../../functions/messageResponse";
 export async function deleteDriver(
   req: Request,
   res: Response,
@@ -14,6 +14,6 @@ export async function deleteDriver(
     await driver.destroy();
     res.status(204).json();
   } catch (err: any) {
-    res.status(400).json(err.message);
+    res.status(400).json(errorMessage(err.message));
   }
 }

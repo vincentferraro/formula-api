@@ -1,6 +1,6 @@
 import { Driver } from "../../db/models/driver";
 import { Request, Response, NextFunction } from "express";
-
+import { successMessage, errorMessage } from "../../functions/messageResponse";
 export async function addDriver(
   req: Request,
   res: Response,
@@ -15,8 +15,8 @@ export async function addDriver(
       number: input?.number,
       teamId: input?.teamId,
     });
-    res.status(200).json(driver);
+    res.status(200).json(successMessage(`Driver added successfully`, driver));
   } catch (err: any) {
-    res.status(400).json(err.message);
+    res.status(400).json(errorMessage(err.message));
   }
 }

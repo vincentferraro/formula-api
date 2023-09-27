@@ -1,7 +1,7 @@
 import { IsNull } from "sequelize-typescript";
 import { Competition } from "../../db/models/competition";
 import { Request, Response, NextFunction } from "express";
-import { error } from "console";
+import { errorMessage } from "../../functions/messageResponse";
 export async function deleteCompetition(
   req: Request,
   res: Response,
@@ -14,12 +14,12 @@ export async function deleteCompetition(
   try {
     const competition: Competition | null = await Competition.findByPk(id);
     if (competition == null) {
-      throw new Error(`id ${id} not found`);
+      throw new Error(`Competition with id ${id} not found`);
     }
 
     await competition.destroy();
     res.status(204).send();
   } catch (err: any) {
-    res.status(400).json(err.message);
+    res.status(400).json(errorMessage(err));
   }
 }

@@ -5,7 +5,7 @@ import { Competition } from "../../db/models/competition";
 import { Request, Response, NextFunction } from "express";
 import { DriverWithPoints } from "../../functions/driverWithPoints";
 import { DriverPoints } from "../../*";
-
+import { successMessage, errorMessage } from "../../functions/messageResponse";
 export async function getDriversPoints(req: Request, res: Response, next: NextFunction): Promise<void>{
     try{
         const driversPoints : Array<DriverPoints> = []
@@ -25,8 +25,8 @@ export async function getDriversPoints(req: Request, res: Response, next: NextFu
             const driverWithPoints : any= await DriverWithPoints(driver)
             driversPoints.push(driverWithPoints)
           }
-          res.status(200).json(driversPoints)
-    }catch(err){
-        res.status(400).json(err)
+          res.status(200).json(successMessage(`Drivers with Points found successfully`,driversPoints))
+    }catch(err: any){
+        res.status(400).json(errorMessage(err.message))
     }
 }

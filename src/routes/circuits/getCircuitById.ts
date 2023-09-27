@@ -12,8 +12,8 @@ export async function getCircuitById(
 
     const circuit: Circuit | null = await Circuit.findByPk(id);
     if (circuit === null) throw new Error(`Circuit with id ${id} not found`);
-    res.status(200).json(successMessage("Circuit successfully displayed",circuit));
+    res.status(200).json(successMessage("Circuit found successfully",circuit));
   } catch (err: any) {
-    res.status(400).json(errorMessage(err.message));
+    res.status(400).json(errorMessage(err));
   }
 }

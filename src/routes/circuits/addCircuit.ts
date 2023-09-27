@@ -15,8 +15,8 @@ export async function addCircuit(
       location: input?.location,
       length: input?.length,
     });
-    res.status(200).json(successMessage('Circuit successfully added',circuit));
+    res.status(200).json(successMessage('Circuit added successfully',circuit));
   } catch (err: any) {
-    res.status(400).json(errorMessage(err.message));
+    res.status(400).json(errorMessage(err));
   }
 }

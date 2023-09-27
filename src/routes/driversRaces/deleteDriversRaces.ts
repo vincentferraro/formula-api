@@ -1,6 +1,6 @@
 import { DriversRaces } from "../../db/models/driversRaces";
 import { Request, Response, NextFunction } from "express";
-import { successMessage, errorMessage } from "../../functions/messageResponse";
+import { errorMessage } from "../../functions/messageResponse";
 export async function deleteDriversRaces(
   req: Request,
   res: Response,
@@ -15,8 +15,8 @@ export async function deleteDriversRaces(
     if (driversRaces === null)
       throw new Error(`DriversRaces with id ${id} not found`);
     await driversRaces.destroy();
-    res.status(204).json(successMessage("DriversRaces successfully removed"));
+    res.status(204).json();
   } catch (err: any) {
-    res.status(400).json(errorMessage(err));
+    res.status(400).json(errorMessage(err.message));
   }
 }
