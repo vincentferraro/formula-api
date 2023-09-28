@@ -11,6 +11,8 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Recommended"
 }
