@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "vitest",
-    "dev": "npx nodemon app.ts"
+    "dev": "npx nodemon src/app.ts"
   },
   "repository": {
     "type": "git",

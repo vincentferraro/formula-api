@@ -1,17 +1,17 @@
 import { Express, Request, Response } from "express";
 import express from "express";
 import helmet from "helmet";
-import { dbConnection } from "./src/db";
-import CompetitionRoutes from "./src/routes/competitions";
-import TeamRoutes from "./src/routes/teams";
-import CircuitRoutes from "./src/routes/circuits";
-import DriverRoutes from "./src/routes/drivers";
-import RaceRoutes from "./src/routes/races"
-import UserRoutes from "./src/routes/users";
-import RankingRoutes from "./src/routes/rankings";
-import DriversRacesRoutes from "./src/routes/driversRaces";
-import { verifyToken } from "./src/middlewares/verifytoken";
-import { hasRights } from "./src/middlewares/hasRights";
+import { dbConnection } from "./db";
+import CompetitionRoutes from "./routes/competitions";
+import TeamRoutes from "./routes/teams";
+import CircuitRoutes from "./routes/circuits";
+import DriverRoutes from "./routes/drivers";
+import RaceRoutes from "./routes/races"
+import UserRoutes from "./routes/users";
+import RankingRoutes from "./routes/rankings";
+import DriversRacesRoutes from "./routes/driversRaces";
+import { verifyToken } from "./middlewares/verifytoken";
+import { hasRights } from "./middlewares/hasRights";
 // const swaggerUi = require("swagger-ui-express");
 // const swaggerDocument = require("./swagger.json");
 
