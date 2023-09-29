@@ -21,7 +21,7 @@ const hasRights_1 = require("./middlewares/hasRights");
 // const swaggerDocument = require("./swagger.json");
 const app = (0, express_1.default)();
 exports.app = app;
-const port = 3000;
+const port = 8080;
 // MIDDLEWARE
 app.use(express_1.default.json());
 app.use((0, helmet_1.default)());
